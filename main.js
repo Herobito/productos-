@@ -18,7 +18,8 @@ function agregarProducto() {
         celdaCantidad.innerHTML = cantidadProducto;
         celdaPrecioUnitario.innerHTML = "$" + precioProducto.toFixed(2);
         celdaMontoTotal.innerHTML = "$" + montoTotal.toFixed(2);
-        celdaAcciones.innerHTML = '<button onclick="moverAEstado(\'tablaPendientes\', \'tablaEntregados\', this)">Entregado</button>';
+        celdaAcciones.innerHTML = '<button onclick="moverAEstado(\'tablaPendientes\', \'tablaEntregados\', this)">Entregado</button>' +
+                                 '<button onclick="eliminarProducto(\'tablaPendientes\', this)">Eliminar</button>';
 
         // Aplicar estilo a la fila para productos pendientes
         fila.className = "pendiente";
@@ -58,6 +59,11 @@ function moverAEntregados() {
     }
 
     actualizarTotalEntregado();
+}
+
+function eliminarProducto(tablaId, botonEliminar) {
+    var fila = botonEliminar.parentNode.parentNode;
+    fila.parentNode.removeChild(fila);
 }
 
 function cerrarCaja() {
